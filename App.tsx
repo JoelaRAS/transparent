@@ -6,7 +6,6 @@ import UploadModal from './components/Modals/UploadModal';
 import LandingPage from './components/LandingPage';
 import { GlassPanel, NeonButton } from './components/UI/NeonComponents';
 import { EvidenceItem, MapMode, ZoneConfig, ZoneType } from './types';
-import { MOCK_EVIDENCE } from './services/mockData';
 import { Menu, Plus, MapPin } from 'lucide-react';
 import { uploadToIPFS } from './services/ipfsService';
 import { sendProofTransaction } from './services/walletService';
@@ -37,7 +36,7 @@ const App: React.FC = () => {
   const [showLanding, setShowLanding] = useState(true);
 
   // App State
-  const [allItems, setAllItems] = useState<EvidenceItem[]>(MOCK_EVIDENCE);
+  const [allItems, setAllItems] = useState<EvidenceItem[]>([]);
   const [selectedItem, setSelectedItem] = useState<EvidenceItem | null>(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isUploadOpen, setIsUploadOpen] = useState(false);
