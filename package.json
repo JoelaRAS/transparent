@@ -1,0 +1,36 @@
+{
+  "name": "transparence",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "leaflet": "^1.9.4",
+    "react-leaflet": "^5.0.0",
+    "maplibre-gl": "4.0.0",
+    "@turf/turf": "6.5.0",
+    "@google/genai": "^1.30.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.4.0",
+    "react-dom": "^19.2.0",
+    "lucide-react": "^0.555.0",
+    "xrpl-connect": "^0.4.0",
+    "buffer": "^6.0.3",
+    "process": "^0.11.10",
+    "events": "^3.3.0",
+    "stream-browserify": "^3.0.0",
+    "crypto-browserify": "^3.12.1",
+    "xrpl": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}

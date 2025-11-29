@@ -1,0 +1,7 @@
+{
+  "name": "Transparence",
+  "description": "A decentralized global map for immutable visual evidence anchored on XRPL.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
