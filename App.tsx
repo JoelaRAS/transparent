@@ -179,7 +179,6 @@ const App: React.FC = () => {
     setDraftLocation(null);
     setDraftLocationSource(null);
     setIsUploadOpen(true);
-    requestUserLocation();
   };
 
   const handlePickLocation = () => {
@@ -194,23 +193,6 @@ const App: React.FC = () => {
       setMapMode('VIEW');
       setIsUploadOpen(true);
     }
-  };
-
-  const requestUserLocation = () => {
-    if (typeof navigator === 'undefined' || !navigator.geolocation) {
-      console.warn("Geolocation not supported");
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setDraftLocation({ lat: pos.coords.latitude, lng: pos.coords.longitude });
-        setDraftLocationSource('auto');
-      },
-      (err) => {
-        console.warn("Geolocation failed", err);
-      },
-      { enableHighAccuracy: true, timeout: 10000 }
-    );
   };
 
   const handleUploadSubmit = async (data: any) => {
@@ -438,7 +420,6 @@ const App: React.FC = () => {
         lng={draftLocation?.lng || null}
         locationSource={draftLocationSource}
         onPickLocation={handlePickLocation}
-        onUseMyLocation={requestUserLocation}
         onSubmit={handleUploadSubmit}
       />
 

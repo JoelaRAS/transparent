@@ -12,11 +12,10 @@ interface UploadModalProps {
   lng: number | null;
   locationSource: 'auto' | 'manual' | null;
   onPickLocation: () => void;
-  onUseMyLocation: () => void;
   onSubmit: (data: any) => Promise<void> | void;
 }
 
-const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, lat, lng, locationSource, onPickLocation, onUseMyLocation, onSubmit }) => {
+const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, lat, lng, locationSource, onPickLocation, onSubmit }) => {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [title, setTitle] = useState('');
@@ -200,13 +199,6 @@ const UploadModal: React.FC<UploadModalProps> = ({ isOpen, onClose, lat, lng, lo
                   )}
               </div>
               <div className="flex gap-2">
-                <button 
-                  type="button"
-                  onClick={onUseMyLocation}
-                  className="text-xs bg-[#00FFB3]/10 text-[#00FFB3] px-3 py-1 rounded hover:bg-[#00FFB3]/20 flex-1"
-                >
-                  Utiliser ma position
-                </button>
                 <button 
                   type="button"
                   onClick={onPickLocation}
