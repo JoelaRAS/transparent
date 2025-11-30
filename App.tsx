@@ -12,7 +12,6 @@ import { useWalletManager } from './hooks/useWalletManager';
 import { XRPLWalletConnector } from './components/Wallet/XRPLWalletConnector';
 import { fetchProofs } from './services/xrplService';
 import * as turf from '@turf/turf';
-import LandingPage from './components/LandingPage';
 import Logo from './components/Logo';
 
 // Helper to calculate distance in km
@@ -42,7 +41,6 @@ const App: React.FC = () => {
   const { walletManager, walletAddress, setWalletAddress } = useWalletManager();
   const [draftLocationSource, setDraftLocationSource] = useState<'auto' | 'manual' | null>(null);
   const [countriesGeoJson, setCountriesGeoJson] = useState<any | null>(null);
-  const [showLanding, setShowLanding] = useState(true);
   
   // Zone Configuration
   const [zoneConfig, setZoneConfig] = useState<ZoneConfig>({ 
@@ -130,10 +128,6 @@ const App: React.FC = () => {
     };
     loadOnChain();
   }, []);
-
-  if (showLanding) {
-    return <LandingPage onEnter={() => setShowLanding(false)} />;
-  }
 
   // --- Handlers ---
 
