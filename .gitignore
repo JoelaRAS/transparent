@@ -12,6 +12,7 @@ dist
 dist-ssr
 *.local
 scaffold-xrp
+"transparence (2)"
 
 # Editor directories and files
 .vscode/*

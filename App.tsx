@@ -3,7 +3,6 @@ import WorldMap from './components/Map/WorldMap';
 import EvidenceList from './components/Sidebar/EvidenceList';
 import DetailModal from './components/Modals/DetailModal';
 import UploadModal from './components/Modals/UploadModal';
-import LandingPage from './components/LandingPage';
 import { GlassPanel, NeonButton } from './components/UI/NeonComponents';
 import { EvidenceItem, MapMode, ZoneConfig, ZoneType } from './types';
 import { Menu, Plus, MapPin } from 'lucide-react';
@@ -13,6 +12,8 @@ import { useWalletManager } from './hooks/useWalletManager';
 import { XRPLWalletConnector } from './components/Wallet/XRPLWalletConnector';
 import { fetchProofs } from './services/xrplService';
 import * as turf from '@turf/turf';
+import LandingPage from './components/LandingPage';
+import Logo from './components/Logo';
 
 // Helper to calculate distance in km
 function getDistanceFromLatLonInKm(lat1: number, lon1: number, lat2: number, lon2: number) {
@@ -32,9 +33,6 @@ function deg2rad(deg: number) {
 }
 
 const App: React.FC = () => {
-  // Navigation State
-  const [showLanding, setShowLanding] = useState(true);
-
   // App State
   const [allItems, setAllItems] = useState<EvidenceItem[]>([]);
   const [selectedItem, setSelectedItem] = useState<EvidenceItem | null>(null);
@@ -44,6 +42,7 @@ const App: React.FC = () => {
   const { walletManager, walletAddress, setWalletAddress } = useWalletManager();
   const [draftLocationSource, setDraftLocationSource] = useState<'auto' | 'manual' | null>(null);
   const [countriesGeoJson, setCountriesGeoJson] = useState<any | null>(null);
+  const [showLanding, setShowLanding] = useState(true);
   
   // Zone Configuration
   const [zoneConfig, setZoneConfig] = useState<ZoneConfig>({ 
@@ -131,6 +130,10 @@ const App: React.FC = () => {
     };
     loadOnChain();
   }, []);
+
+  if (showLanding) {
+    return <LandingPage onEnter={() => setShowLanding(false)} />;
+  }
 
   // --- Handlers ---
 
@@ -274,10 +277,6 @@ const App: React.FC = () => {
 
   const sidebarVisible = sidebarOpen;
 
-  if (showLanding) {
-    return <LandingPage onEnter={() => setShowLanding(false)} />;
-  }
-
   return (
     <div className="relative w-full h-screen bg-[#0A0F14] overflow-hidden">
       
@@ -287,10 +286,8 @@ const App: React.FC = () => {
         {/* Logo & Title */}
         <div className="pointer-events-auto flex flex-col gap-2">
           <GlassPanel className="px-5 py-3 rounded-full flex items-center gap-3 w-fit">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#00D4FF] to-[#00FFB3] shadow-[0_0_15px_rgba(0,212,255,0.5)]"></div>
-            <div>
-              <h1 className="text-xl font-bold text-white tracking-wider">TRANSPARENCE</h1>
-            </div>
+            <Logo className="w-10 h-10" />
+            <div className="text-xl font-bold text-white tracking-wider">TRANSPARENCE</div>
           </GlassPanel>
 
           {/* Zone Selector */}

@@ -1,65 +1,70 @@
 import React from 'react';
-import { NeonButton, GlassPanel } from './UI/NeonComponents';
-import { Globe, ShieldCheck, Zap } from 'lucide-react';
+import Logo from './Logo';
+import { ArrowRight, ShieldCheck, MapPin, Database } from 'lucide-react';
 
-interface LandingPageProps {
+type LandingPageProps = {
   onEnter: () => void;
-}
+};
 
 const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
   return (
-    <div className="relative w-full h-screen bg-[#0A0F14] overflow-hidden flex flex-col items-center justify-center text-center z-[5000]">
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#00D4FF] rounded-full blur-[128px]"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#00FFB3] rounded-full blur-[128px]"></div>
-      </div>
-
-      <div className="relative z-10 max-w-4xl px-6">
-        <div className="mb-8 flex justify-center">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-[#00D4FF] to-[#00FFB3] shadow-[0_0_50px_rgba(0,212,255,0.6)] animate-pulse"></div>
+    <div className="min-h-screen bg-[#0A0F14] text-slate-100 flex flex-col">
+      <header className="w-full py-6 px-6 flex items-center justify-between border-b border-white/5">
+        <div className="flex items-center gap-3">
+          <Logo className="w-12 h-12" />
+          <div>
+            <div className="text-lg font-semibold tracking-wide">TRANSPARENCE</div>
+            <div className="text-xs text-slate-500 uppercase tracking-[0.2em]">On-Chain Evidence</div>
+          </div>
         </div>
-        
-        <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 tracking-tighter">
-          TRANSPARENCE
-        </h1>
-        
-        <p className="text-xl md:text-2xl text-gray-400 mb-12 font-light max-w-2xl mx-auto">
-          The global map of immutable visual evidence. 
-          <span className="text-[#00FFB3]"> Verify. Anchor. Reveal.</span>
-        </p>
-
-        <NeonButton 
-          onClick={onEnter} 
-          className="px-12 py-4 text-xl tracking-widest font-bold shadow-[0_0_30px_rgba(0,212,255,0.4)]"
+        <button
+          onClick={onEnter}
+          className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-slate-50 px-4 py-2 rounded-full border border-white/10 text-sm font-semibold transition"
         >
-          ENTER THE MAP
-        </NeonButton>
+          Launch Map
+          <ArrowRight size={16} />
+        </button>
+      </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
-          <GlassPanel className="p-6 flex flex-col items-center">
-            <Globe className="text-[#00D4FF] mb-4" size={32} />
-            <h3 className="text-white font-bold mb-2">Global Coverage</h3>
-            <p className="text-sm text-gray-400">Real-time visualization of events worldwide.</p>
-          </GlassPanel>
-          <GlassPanel className="p-6 flex flex-col items-center">
-            <ShieldCheck className="text-[#00FFB3] mb-4" size={32} />
-            <h3 className="text-white font-bold mb-2">Immutable Proof</h3>
-            <p className="text-sm text-gray-400">Anchored on XRPL. Impossible to censor or alter.</p>
-          </GlassPanel>
-          <GlassPanel className="p-6 flex flex-col items-center">
-            <Zap className="text-yellow-400 mb-4" size={32} />
-            <h3 className="text-white font-bold mb-2">Instant Verify</h3>
-            <p className="text-sm text-gray-400">AI-powered analysis and community verification.</p>
-          </GlassPanel>
+      <main className="flex-1 flex flex-col items-center text-center px-6 py-16 gap-12">
+        <div className="max-w-3xl space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs uppercase tracking-[0.2em] border border-emerald-500/20">
+            Censorship Resistant • IPFS + XRPL
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+            Uncensorable visual evidence anchored on XRPL.
+          </h1>
+          <p className="text-lg text-slate-400 leading-relaxed">
+            Upload images, videos, and documents to IPFS, sign a proof on XRPL, and geo-pin events on a live map.
+            No backend, no gatekeepers—just verifiable truth.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onClick={onEnter}
+              className="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-900 font-bold px-8 py-3 rounded-full hover:scale-105 transition shadow-[0_0_25px_rgba(34,211,238,0.25)]"
+            >
+              Enter the Map
+              <ArrowRight size={18} />
+            </button>
+          </div>
         </div>
-      </div>
-      
-      <div className="absolute bottom-4 text-xs text-gray-600 font-mono">
-        POWERED BY XRPL & IPFS
-      </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
+          <Feature icon={<ShieldCheck className="w-6 h-6" />} title="Immutable Proofs" desc="Signed on XRPL with Memo metadata." />
+          <Feature icon={<Database className="w-6 h-6" />} title="Decentralized Storage" desc="Media stored on IPFS via Pinata." />
+          <Feature icon={<MapPin className="w-6 h-6" />} title="Geo Anchored" desc="Point-in-country/radius filtering on a live map." />
+        </div>
+      </main>
     </div>
   );
 };
+
+const Feature = ({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) => (
+  <div className="bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col gap-3 items-start text-left">
+    <div className="text-cyan-300">{icon}</div>
+    <div className="text-lg font-semibold text-white">{title}</div>
+    <div className="text-sm text-slate-400">{desc}</div>
+  </div>
+);
 
 export default LandingPage;
