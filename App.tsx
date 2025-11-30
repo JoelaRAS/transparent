@@ -286,7 +286,7 @@ const App: React.FC = () => {
         {/* Logo & Title */}
         <div className="pointer-events-auto flex flex-col gap-2">
           <GlassPanel className="px-5 py-3 rounded-full flex items-center gap-3 w-fit">
-            <Logo className="w-10 h-10" />
+            <img src="/Google_AI_Studio_2025-11-30T03_05_53.719Z.png" alt="Transparence" className="w-10 h-10 rounded-full bg-black" />
             <div className="text-xl font-bold text-white tracking-wider">TRANSPARENCE</div>
           </GlassPanel>
 

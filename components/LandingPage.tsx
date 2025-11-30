@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from './Logo';
 import { ArrowRight, ShieldCheck, MapPin, Database } from 'lucide-react';
 
 type LandingPageProps = {
@@ -11,7 +10,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onEnter }) => {
     <div className="min-h-screen bg-[#0A0F14] text-slate-100 flex flex-col">
       <header className="w-full py-6 px-6 flex items-center justify-between border-b border-white/5">
         <div className="flex items-center gap-3">
-          <Logo className="w-12 h-12" />
+          <img
+            src="/Google_AI_Studio_2025-11-30T03_05_53.719Z.png"
+            alt="Transparence"
+            className="w-12 h-12 rounded-full bg-black"
+          />
           <div>
             <div className="text-lg font-semibold tracking-wide">TRANSPARENCE</div>
             <div className="text-xs text-slate-500 uppercase tracking-[0.2em]">On-Chain Evidence</div>
